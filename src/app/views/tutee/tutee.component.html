@@ -1,0 +1,161 @@
+<p>tutee works!</p>
+<!--1-->
+<!-- <div class="row" [ngClass]="selectedSurveyValue==1?visibileClass:invisibleClass">
+  <div class="row d-flex justify-content-center">
+    <h5 class="d-flex justify-content-center" style="margin-bottom:20px; margin-top:20px;">1. What level of education do you want to teach?</h5>
+  </div> -->
+
+
+  <div class="col-10 d-flex justify-content-center minimum-mid" style="width:100%;flex-direction:column" [formGroup]="tuteeForm">
+    
+    <!--1-->
+    <div class="row" [ngClass]="selectedSurveyValue==1?visibileClass:invisibleClass">
+      <div class="row d-flex justify-content-center">
+        <h5 class="d-flex justify-content-center" style="margin-bottom:20px; margin-top:20px;">1. What level are you in school?</h5>
+      </div>
+  
+  
+      <div class="col-10 d-flex justify-content-center columns" style="width:100%;" >
+        <div *ngFor="let level of levels; index as i" >
+          <input type="radio" formControlName="level" name="level" (click)=handleChange(level.name) class="form-check-input" [value]="level.name" >
+          <label>{{level.name}}
+          </label>
+        </div>
+      </div>
+    </div>
+
+
+    <!--2-->
+    <div class="row my-address-container set-minimum"  style="padding:0px; margin:0px; padding-bottom:20px" >
+      <!--2-->
+      <div class="row" [ngClass]="selectedSurveyValue==2?visibileClass:invisibleClass">
+       <div class="row d-flex justify-content-center">
+         <h5 class="d-flex justify-content-center" style="margin-bottom:20px; margin-top:20px;">2. What subject or subjects do you need help?</h5>
+       </div>
+   
+   
+       <div *ngIf="level=='primary'" class="col-10 d-flex justify-content-center minimum-mid" style="width:100%;flex-direction:column">
+         <div class="form-check margin-auto checkbox-form">
+          <form [formGroup]="subjectForm" novalidate>
+            <div *ngFor="let subject of subjects; let i=index">
+              <input class="form-check-input form-control" id="flexRadioDefault" type="radio" name="level" formArrayName="selectedSubject" [value]="subject.value"
+              />
+              {{ subject.name}}
+            </div>
+          </form>
+         </div>
+        </div>
+
+        <div *ngIf="level=='secondary'" class="col-10 d-flex justify-content-center minimum-mid" style="width:100%;flex-direction:column">
+          <div class="form-check margin-auto checkbox-form">
+           <form [formGroup]="subjectForm" novalidate>
+             <div *ngFor="let subject of subjectUpper; let i=index">
+               <input class="form-check-input form-control" id="flexRadioDefault" type="radio" name="level" formArrayName="selectedSubject" [value]="subject.value"
+               />
+               {{ subject.name}}
+             </div>
+           </form>
+          </div>
+         </div>
+     </div>
+
+    </div>
+    <!--progress bar-->
+    <div class="row d-flex" style="margin-top:10px">
+      <div class="row d-flex" style="justify-content:center; display:inline-flex">
+
+      <div class="col-md-9 col-8 d-flex justify-content-center">
+      <div class="d-flex justify-content-center align-items-center color-progress-green div-circle" [ngClass]="selectedSurveyValue<1?removeNumber:addBackground">
+        <span class="hide-number" [ngClass]="selectedSurveyValue<1?noRemove:removeNumber">1</span><span><img class="hide-number" [ngClass]="selectedSurveyValue<1?removeNumber:noRemove" src="../assets/tick.png" alt="profilepic" width="40px" height="40px"></span>
+      </div>
+      <hr class="hr-styling hide-number"/>
+      
+      <div class="d-flex justify-content-center align-items-center div-circle" [ngClass]="selectedSurveyValue<2?removeNumber:addBackground">
+        <span class="hide-number" [ngClass]="selectedSurveyValue<2?noRemove:removeNumber">2</span><span><img class="hide-number" [ngClass]="selectedSurveyValue<2?removeNumber:noRemove" src="../assets/tick.png" alt="profilepic" width="40px" height="40px"></span>
+      </div>
+      <hr class="hr-styling hide-number"/>
+
+      <div class="d-flex justify-content-center align-items-center div-circle" [ngClass]="selectedSurveyValue<3?removeNumber:addBackground" >
+        <span class="hide-number" [ngClass]="selectedSurveyValue<3?noRemove:removeNumber">3</span><span><img class="hide-number" [ngClass]="selectedSurveyValue<3?removeNumber:noRemove"src="../assets/tick.png" alt="profilepic" width="40px" height="40px"></span>
+      </div>
+      <hr class="hr-styling hide-number"/>
+      
+      <div class="d-flex justify-content-center align-items-center div-circle" [ngClass]="selectedSurveyValue<4?removeNumber:addBackground">
+        <span class="hide-number" [ngClass]="selectedSurveyValue<4?noRemove:removeNumber">4</span><span><img class="hide-number" [ngClass]="selectedSurveyValue<4?removeNumber:noRemove"src="../assets/tick.png" alt="profilepic" width="40px" height="40px"></span>
+      </div>
+      <hr class="hr-styling hide-number"/>
+
+      <div class="d-flex justify-content-center align-items-center div-circle" [ngClass]="selectedSurveyValue<5?removeNumber:addBackground">
+        <span class="hide-number"[ngClass]="selectedSurveyValue<5?noRemove:removeNumber">5</span><span><img class="hide-number" [ngClass]="selectedSurveyValue<5?removeNumber:noRemove"src="../assets/tick.png" alt="profilepic" width="40px" height="40px"></span>
+      </div>
+      <hr class="hr-styling hide-number"/>
+
+      <div class="d-flex justify-content-center align-items-center div-circle" [ngClass]="selectedSurveyValue<6?removeNumber:addBackground">
+        <span class="hide-number"[ngClass]="selectedSurveyValue<6?noRemove:removeNumber">6</span><span><img class="hide-number" [ngClass]="selectedSurveyValue<6?removeNumber:noRemove" src="../assets/tick.png" alt="profilepic" width="40px" height="40px"></span>
+      </div>
+      <hr class="hr-styling hide-number"/>
+
+      <div class="d-flex justify-content-center align-items-center div-circle" [ngClass]="selectedSurveyValue<7?removeNumber:addBackground">
+        <span class="hide-number" [ngClass]="selectedSurveyValue<7?noRemove:removeNumber">7</span><span><img class="hide-number" [ngClass]="selectedSurveyValue<7?removeNumber:noRemove" src="../assets/tick.png" alt="profilepic" width="40px" height="40px"></span>
+      </div>
+      <hr class="hr-styling hide-number"/>
+
+      <div class="d-flex justify-content-center align-items-center div-circle" [ngClass]="selectedSurveyValue<8?removeNumber:addBackground">
+        <span class="hide-number"[ngClass]="selectedSurveyValue<8?noRemove:removeNumber">8</span><span><img class="hide-number" [ngClass]="selectedSurveyValue<8?removeNumber:noRemove" src="../assets/tick.png" alt="profilepic" width="40px" height="40px"></span>
+      </div>
+      <hr class="hr-styling hide-number"/>
+
+      <div class="d-flex justify-content-center align-items-center div-circle" [ngClass]="selectedSurveyValue<9?removeNumber:addBackground">
+        <span class="hide-number" [ngClass]="selectedSurveyValue<9?noRemove:removeNumber">9</span><span><img class="hide-number" [ngClass]="selectedSurveyValue<9?removeNumber:noRemove" src="../assets/tick.png" alt="profilepic" width="40px" height="40px"></span>
+      </div>
+      <hr class="hr-styling hide-number"/>
+
+      <div class="d-flex justify-content-center align-items-center div-circle" [ngClass]="selectedSurveyValue<10?removeNumber:addBackground">
+        <span class="hide-number" [ngClass]="selectedSurveyValue<10?noRemove:removeNumber">10</span><span><img class="hide-number" [ngClass]="selectedSurveyValue<10?removeNumber:noRemove" src="../assets/tick.png" alt="profilepic" width="40px" height="40px"></span>
+      </div>
+      <hr class="hr-styling hide-number"/>
+    
+      <div class="d-flex justify-content-center align-items-center div-circle" [ngClass]="selectedSurveyValue<11?removeNumber:addBackground">
+        <span class="hide-number" [ngClass]="selectedSurveyValue<11?noRemove:removeNumber">11</span><span><img class="hide-number" [ngClass]="selectedSurveyValue<11?removeNumber:noRemove" src="../assets/tick.png" alt="profilepic" width="40px" height="40px"></span>
+      </div>
+      <hr class="hr-styling hide-number"/>
+
+      <div class="d-flex justify-content-center align-items-center div-circle" [ngClass]="selectedSurveyValue<12?removeNumber:addBackground">
+        <span class="hide-number"[ngClass]="selectedSurveyValue<12?noRemove:removeNumber">12</span><span><img class="hide-number" [ngClass]="selectedSurveyValue<12?removeNumber:noRemove" src="../assets/tick.png" alt="profilepic" width="40px" height="40px"></span>
+      </div>
+      <hr class="hr-styling hide-number"/>
+    
+      <div class="d-flex justify-content-center align-items-center div-circle" [ngClass]="selectedSurveyValue<13?removeNumber:addBackground">
+        <span class="hide-number"[ngClass]="selectedSurveyValue<13?noRemove:removeNumber">13</span><span><img class="hide-number" [ngClass]="selectedSurveyValue<13?removeNumber:noRemove" src="../assets/tick.png" alt="profilepic" width="40px" height="40px"></span>
+      </div>
+      <hr class="hr-styling hide-number"/>
+      
+      <div class="d-flex justify-content-center align-items-center div-circle" [ngClass]="selectedSurveyValue<14?removeNumber:addBackground">
+        <span class="hide-number"[ngClass]="selectedSurveyValue<14?noRemove:removeNumber">14</span><span><img class="hide-number" [ngClass]="selectedSurveyValue<14?removeNumber:noRemove" src="../assets/tick.png" alt="profilepic" width="40px" height="40px"></span>
+      </div>
+      
+      </div>
+
+      </div>
+      <div class="row d-flex" style="justify-content: space-between; margin-top:20px;">
+        <div class="col-md-4 col-4">
+          <button style="width:100%; justify-content: start;"class="btn btn-primary" (click)="onBack()">Back</button>
+        </div>
+
+        <div class="col-md-4 col-4" [ngClass]="selectedSurveyValue<14?vis:invis">
+          <button style="width:100%; justify-content: end;"class="btn btn-primary" (click)="onNext()"
+          >Next</button>
+        </div>
+
+        <!--Show submit button if last question-->
+        <div class="col-md-4 col-4" [ngClass]="selectedSurveyValue>=14?vis:invis">
+          <button style="width:100%; justify-content: end;"class="btn btn-primary" (click)="addSurvey()"
+          >Submit</button>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+<!-- </div> -->
