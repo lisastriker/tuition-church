@@ -27,6 +27,7 @@ export class TuteeComponent {
   levelForm: FormGroup;
   subjectForm: FormGroup;
   baseUrl = "https://tuition-382404.as.r.appspot.com"
+  personData : Array<any>
   // levels: Array<any> = [
   //   {name:"Kindergarten", value:"kindergarten"},
   //   {name: "Lower Primary", value:"lower-primary"},
@@ -89,9 +90,25 @@ export class TuteeComponent {
       selectedSubject: new FormArray([])
     });
     this.tuteeForm = this.createSurveyFormGroup();
+    this.personData = []
   }
   ngOnInit(){
-
+    if(localStorage.getItem("person_id")!== null){
+      const headerDict = {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      }
+      var id = localStorage.getItem("person_id")
+      console.log("Hello")
+      this.http.post<any>(`${this.baseUrl}/retrieve_by_id/`, {_id: id}, {headers:new HttpHeaders(headerDict)}).subscribe(data => {
+        console.log(data)
+        this.personData = data
+        console.log(this.personData[0])
+        this.tuteeForm.patchValue({name:this.personData[0].name, email:this.personData[0].email})
+      })
+      
+    }
   }
 
   onCheckboxChange(event: any) {
@@ -146,26 +163,44 @@ export class TuteeComponent {
       'Access-Control-Allow-Headers': 'Content-Type',
     }
 
-    var formData = {
-      role:"student",
-      name:this.tuteeForm.get("name")?.value,
-      email:this.tuteeForm.get("email")?.value,
-      level:this.tuteeForm.get("level")?.value,
-      subjects:Object.values(this.subjectForm.value.selectedSubject),
-     }
-     this.http.post<any>(`${this.baseUrl}/create_person/real/`, formData, {headers:new HttpHeaders(headerDict)}).subscribe(data => {
+    if(localStorage.getItem("person_id")!==null){
+      var formDataID = {
+        _id:localStorage.getItem("person_id"),
+        role:"student",
+        level:this.tuteeForm.get("level")?.value,
+        subjects:Object.values(this.subjectForm.value.selectedSubject),
+        timeslots:[]
+      }
+      this.http.put<any>(`${this.baseUrl}/update_person/`, formDataID, {headers:new HttpHeaders(headerDict)}).subscribe(data => {
         console.log(data)
-    })
-    console.log(formData)
+      })
+    } else {
+      var formData = {
+        role:"student",
+        name:this.tuteeForm.get("name")?.value,
+        email:this.tuteeForm.get("email")?.value,
+        level:this.tuteeForm.get("level")?.value,
+        subjects:Object.values(this.subjectForm.value.selectedSubject),
+        timeslots:[]
+       }
+  
+       this.http.post<any>(`${this.baseUrl}/create_person/`, formData, {headers:new HttpHeaders(headerDict)}).subscribe(data => {
+        console.log(data)
+     })
+    }
+  
+    
   }
 
+  
   createSurveyFormGroup(): FormGroup {
     return this.fb.group({
       name:"",
-      subject:[],
+      subject:[""],
       level:"none",
       lang:"",
-      email:["", [Validators.required]]
+      email:["", [Validators.required]],
+      timeslots:[],
     });
   }
 

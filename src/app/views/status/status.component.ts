@@ -40,9 +40,14 @@ export class StatusComponent {
       email:this.emailForm.get("email")?.value,
      }
      this.matchedEmail = [];
-     this.http.post<any>(`${this.baseUrl}/retrieve_persons/`, formData, {headers:new HttpHeaders(headerDict)}).subscribe(data => {
+     this.http.post<any>(`${this.baseUrl}/retrieve_by_email/`, formData, {headers:new HttpHeaders(headerDict)}).subscribe(data => {
         this.matchedEmail = data
     })
+  }
+
+  edit(person:string){
+    localStorage.setItem("person_id", person)
+    window.location.href = '/tutee';
   }
 
 }

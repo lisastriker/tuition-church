@@ -1,6 +1,6 @@
 <div class="row" [formGroup]="emailForm">
   <div class="row d-flex justify-content-center">
-    <h5 class="d-flex justify-content-center" style="margin-bottom:20px; margin-top:20px;">1. Please provide us with your email?</h5>
+    <h5 class="d-flex justify-content-center" style="margin-bottom:20px; margin-top:20px;">1. Enter your email to check your status</h5>
   </div>
 
   <div class="col-10 d-flex justify-content-center minimum-mid" style="width:100%;">
@@ -10,26 +10,41 @@
   </div>
 
 
-  <div class="row d-flex" style="justify-content: space-between; margin-top:20px;">
+  <div class="row d-flex justify-content-center marg-bot">
     <!--Show submit button if last question-->
-    <div class="col-md-4 col-4">
+    <div class="col-md-3 col-3" style="margin-top:20px;">
       <button style="width:100%; justify-content: end;"class="btn btn-primary" (click)="onSubmit()"
       >Submit</button>
     </div>
   </div>
 
 
-
-  <div *ngFor="let person of matchedEmail" class="box-border">
-    <div class="row col-12">
-      <span class="box"></span>{{person.name}}
-    </div>
-    <div class="row col-12">
-      <div class="col-4" *ngFor="let subject of person.subjects">
-        {{subject}}
+  <div class="row justify-content-center d-flex align-items-center">
+    <div *ngFor="let person of matchedEmail" class="box-border-status col-9 justify-content-center d-flex align-items-start marg-bot">
+      <div class="col-5 align-items-start marg-bot">
+        <div class="d-flex align-items-center">
+          <span class="box" style="margin-right:10px; display:inline-flex"></span>
+          <span>{{person.name}}</span>
+          <!-- <span>{{person._id.$oid}}</span> -->
+        </div>
+        <p class="marg-bot">Role : {{person.role}}</p>
+        <p class="marg-bot">Contact : {{person.email}}</p>
+        <div class="button-boxes-yellow d-flex justify-content-center align-items-center marg-bot" >
+          {{person.level}}
+        </div>
+        <div style="display:flex; flex-direction:row">
+          <div *ngFor="let subject of person.subjects" class="button-boxes d-flex justify-content-center align-items-center marg-bot" >
+            {{subject}}
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-5 align-items-start">
+        <h2>Status</h2>
+        <div class="button-boxes-red d-flex justify-content-center align-items-center">Under review</div>
+        <button class="button-boxes d-flex justify-content-center align-items-center" (click)="edit(person._id.$oid)">Edit my subjects</button>
       </div>
     </div>
-    
-
   </div>
+
 </div>

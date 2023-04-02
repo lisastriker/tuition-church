@@ -37,7 +37,23 @@ color:white!important;
   box-sizing:border-box
 }
 
+.box-border-status{
+  padding:20px;
+  border:solid 2px #0E7AA0;
+  flex-direction:row;
+  box-sizing:border-box;
+  border-radius:10px;
+}
 .remove-padding{
   padding-left:0!important;
   padding-right:0!important;
+}
+
+.padding-box{
+  padding:20px;
+}
+
+.remove-a{
+  text-decoration: none;
+  color:white;
 }
