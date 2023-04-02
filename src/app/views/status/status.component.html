@@ -1,0 +1,35 @@
+<div class="row" [formGroup]="emailForm">
+  <div class="row d-flex justify-content-center">
+    <h5 class="d-flex justify-content-center" style="margin-bottom:20px; margin-top:20px;">1. Please provide us with your email?</h5>
+  </div>
+
+  <div class="col-10 d-flex justify-content-center minimum-mid" style="width:100%;">
+    <label>
+    <input type="email" [email]="true" formControlName="email" placeholder="hello@gmail.com" style="width:100%; justify-content: start; margin-right:20px;" class="form-control" (keyup)="onKey($event)"/>
+    </label>
+  </div>
+
+
+  <div class="row d-flex" style="justify-content: space-between; margin-top:20px;">
+    <!--Show submit button if last question-->
+    <div class="col-md-4 col-4">
+      <button style="width:100%; justify-content: end;"class="btn btn-primary" (click)="onSubmit()"
+      >Submit</button>
+    </div>
+  </div>
+
+
+
+  <div *ngFor="let person of matchedEmail" class="box-border">
+    <div class="row col-12">
+      <span class="box"></span>{{person.name}}
+    </div>
+    <div class="row col-12">
+      <div class="col-4" *ngFor="let subject of person.subjects">
+        {{subject}}
+      </div>
+    </div>
+    
+
+  </div>
+</div>
