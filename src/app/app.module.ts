@@ -7,11 +7,14 @@ import { TutorComponent } from './views/tutor/tutor.component';
 import { TuteeComponent } from './views/tutee/tutee.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './views/home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
     TutorComponent,
-    TuteeComponent
+    TuteeComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -19,6 +22,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

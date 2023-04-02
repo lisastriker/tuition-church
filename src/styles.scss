@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+.btn-primary{
+  background:#79C1CA!important;
+  color:white;
+}
+
+.btn-outline-primary{
+height:40px;
+border:solid #79C1CA 1.5px!important;
+color:#3B0069 !important;
+}
+
+.btn-outline-primary:hover{
+color:white!important;
+}
+
+.btn-white-primary-active{
+  background:#00BDB1!important;
+  color:white;
+}
+
+.btn-secondary{
+  background: #FA736D!important;
+  color:white;
+}
+
+
+.btn-white-primary-inactive{
+  background:white!important;
+  color:black;
+  border:solid black 1px;
+}
+
+.box-border{
+  border:solid 2px #0E7AA0;
+  flex-direction:column;
+  box-sizing:border-box
+}
+
+.remove-padding{
+  padding-left:0!important;
+  padding-right:0!important;
+}

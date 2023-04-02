@@ -11,13 +11,39 @@
     <!--1-->
     <div class="row" [ngClass]="selectedSurveyValue==1?visibileClass:invisibleClass">
       <div class="row d-flex justify-content-center">
-        <h5 class="d-flex justify-content-center" style="margin-bottom:20px; margin-top:20px;">1. What level are you in school?</h5>
+        <h5 class="d-flex justify-content-center" style="margin-bottom:20px; margin-top:20px;">1. Please provide us with your name?</h5>
+      </div>
+  
+  
+      <div class="col-10 d-flex justify-content-center minimum-mid" style="width:100%;">
+        <label>
+        <input type="text" formControlName="name" placeholder="John" style="width:100%; justify-content: start; margin-right:20px;" class="form-control" (keyup)="onKey($event)"/>
+        </label>
+      </div>
+    </div>
+
+    <!--2-->
+    <div class="row" [ngClass]="selectedSurveyValue==2?visibileClass:invisibleClass">
+      <div class="row d-flex justify-content-center">
+        <h5 class="d-flex justify-content-center" style="margin-bottom:20px; margin-top:20px;">2. Please provide us with your email?</h5>
+      </div>
+  
+      <div class="col-10 d-flex justify-content-center minimum-mid" style="width:100%;">
+        <label>
+        <input type="email" [email]="true" formControlName="email" placeholder="hello@gmail.com" style="width:100%; justify-content: start; margin-right:20px;" class="form-control" (keyup)="onKey($event)"/>
+        </label>
+      </div>
+    </div>
+    <!--3-->
+    <div class="row" [ngClass]="selectedSurveyValue==3?visibileClass:invisibleClass">
+      <div class="row d-flex justify-content-center">
+        <h5 class="d-flex justify-content-center" style="margin-bottom:20px; margin-top:20px;">3. What level are you in school?</h5>
       </div>
   
   
       <div class="col-10 d-flex justify-content-center columns" style="width:100%;" >
         <div *ngFor="let level of levels; index as i" >
-          <input type="radio" formControlName="level" name="level" (click)=handleChange(level.name) class="form-check-input" [value]="level.name" >
+          <input type="radio" name="level" (click)=handleChange(level.name) class="form-check-input" [value]="level.name" >
           <label>{{level.name}}
           </label>
         </div>
@@ -25,20 +51,18 @@
     </div>
 
 
-    <!--2-->
+    <!--4-->
     <div class="row my-address-container set-minimum"  style="padding:0px; margin:0px; padding-bottom:20px" >
-      <!--2-->
-      <div class="row" [ngClass]="selectedSurveyValue==2?visibileClass:invisibleClass">
+      <div class="row" [ngClass]="selectedSurveyValue==4?visibileClass:invisibleClass">
        <div class="row d-flex justify-content-center">
-         <h5 class="d-flex justify-content-center" style="margin-bottom:20px; margin-top:20px;">2. What subject or subjects do you need help?</h5>
+         <h5 class="d-flex justify-content-center" style="margin-bottom:20px; margin-top:20px;">4. What subject or subjects do you need help?</h5>
        </div>
-   
    
        <div *ngIf="level=='primary'" class="col-10 d-flex justify-content-center minimum-mid" style="width:100%;flex-direction:column">
          <div class="form-check margin-auto checkbox-form">
           <form [formGroup]="subjectForm" novalidate>
             <div *ngFor="let subject of subjects; let i=index">
-              <input class="form-check-input form-control" id="flexRadioDefault" type="radio" name="level" formArrayName="selectedSubject" [value]="subject.value"
+              <input class="form-check-input form-control" id="flexCheckChecked" type="checkbox" formArrayName="selectedSubject" [value]="subject.value" (change)="onCheckboxChange($event)"
               />
               {{ subject.name}}
             </div>
@@ -50,16 +74,38 @@
           <div class="form-check margin-auto checkbox-form">
            <form [formGroup]="subjectForm" novalidate>
              <div *ngFor="let subject of subjectUpper; let i=index">
-               <input class="form-check-input form-control" id="flexRadioDefault" type="radio" name="level" formArrayName="selectedSubject" [value]="subject.value"
+               <input class="form-check-input form-control" id="flexCheckChecked" type="checkbox" formArrayName="selectedSubject" [value]="subject.value" (change)="onCheckboxChange($event)"
                />
                {{ subject.name}}
              </div>
            </form>
           </div>
-         </div>
-     </div>
-
+        </div>
+      </div>
     </div>
+
+    <!--4-->
+    <div class="row" [ngClass]="selectedSurveyValue==5?visibileClass:invisibleClass">
+      <!-- <div class="row d-flex justify-content-center">
+        <h5 class="d-flex justify-content-center" style="margin-bottom:20px; margin-top:20px;">3. What language do you prefer your tutor to speak in?</h5>
+      </div>
+  
+  
+      <div class="col-10 d-flex justify-content-center minimum-mid" style="width:100%;">
+        <label>English
+        <input type="radio" formControlName="lang" style="width:50px; justify-content: start; margin-right:20px;" class="form-control" value="English"/>
+        </label>
+        <label>Chinese
+        <input type="radio" formControlName="lang" style="width:50px; justify-content: end;"class="form-control"  value="Chinese"/>  
+        </label>
+      </div> -->
+    </div>
+
+
+
+
+
+
     <!--progress bar-->
     <div class="row d-flex" style="margin-top:10px">
       <div class="row d-flex" style="justify-content:center; display:inline-flex">

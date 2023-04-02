@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-tutee',
   templateUrl: './tutee.component.html',
@@ -26,6 +26,7 @@ export class TuteeComponent {
   level= "";
   levelForm: FormGroup;
   subjectForm: FormGroup;
+  baseUrl = "https://tuition-382404.as.r.appspot.com"
   // levels: Array<any> = [
   //   {name:"Kindergarten", value:"kindergarten"},
   //   {name: "Lower Primary", value:"lower-primary"},
@@ -51,21 +52,23 @@ export class TuteeComponent {
   subjects: Array<any> = [
     {name:"English", value:"English"},
     {name: "Chinese", value:"Chinese"},
+    {name: "Malay", value:"Malay"},
+    {name: "Tamil", value:"Tamil"},
     {name: "Math", value:"Math"},
     {name:"Science", value:"Science"},
     {name:"Geography", value:"Geography"},
     {name:"Social Studies", value:"Social Studies"},
     {name:"History", value:"History"},
     {name:"Literature", value:"Literature"},
-    {name:"Others", value:"others"},
   ]
 
   subjectUpper: Array<any> = [
     {name:"English", value:"English"},
     {name: "Chinese", value:"Chinese"},
+    {name: "Malay", value:"Malay"},
+    {name: "Tamil", value:"Tamil"},
     {name: "E Math", value:"E Math"},
     {name: "A Math", value:" A Math"},
-    {name:"Science", value:"Science"},
     {name:"Chemistry", value:"Chemistry"},
     {name: "Biology", value:"Biology"},
     {name: "Physics", value:"Physics"},
@@ -73,11 +76,11 @@ export class TuteeComponent {
     {name:"Social Studies", value:"Social Studies"},
     {name:"History", value:"History"},
     {name:"Literature", value:"Literature"},
-    {name:"Others", value:"others"},
   ]
 
   constructor(
     private fb: FormBuilder,
+    private http: HttpClient
   ){
     this.levelForm = fb.group({
       selectedLevel: new FormArray([])
@@ -92,16 +95,18 @@ export class TuteeComponent {
   }
 
   onCheckboxChange(event: any) {
-    const selected = (this.levelForm.controls['selectedReferral'] as FormArray);
+    const selected = (this.subjectForm.controls['selectedSubject'] as FormArray);
     if (event.target.checked) {
-      const index = selected.controls
-      .findIndex(x => x.value === event.target.value);
-      selected.removeAt(index);
+      selected.push(new FormControl(event.target.value));
     } else {
       const index = selected.controls
       .findIndex(x => x.value === event.target.value);
       selected.removeAt(index);
     }
+  }
+
+  onKey(event:any) {
+    const inputValue = event.target.value;
   }
 
   onNext(){
@@ -121,12 +126,13 @@ export class TuteeComponent {
 
   handleChange(input:string){ 
     const subjects = ["Primary 1","Primary 2","Primary 3","Primary 4","Primary 5","Primary 6"]
+    const upperSubjects = ["Primary 1","Primary 2","Primary 3","Primary 4","Primary 5","Primary 6"]
     if(subjects.includes(input)){
       this.level = "primary"
     } else {
       this.level = "secondary"
     }
-    console.log(this.level);
+    console.log(input);
   } 
 
 //   onSingleAnswer(selectedInput:string){
@@ -134,22 +140,32 @@ export class TuteeComponent {
 //   }
 
   addSurvey(){
-    // var formData = {
-    //   level:this.tuteeForm.get("level")?.value
-    // }
-    console.log(this.tuteeForm.get("level")?.value)
+    const headerDict = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    }
+
+    var formData = {
+      role:"student",
+      name:this.tuteeForm.get("name")?.value,
+      email:this.tuteeForm.get("email")?.value,
+      level:this.tuteeForm.get("level")?.value,
+      subjects:Object.values(this.subjectForm.value.selectedSubject),
+     }
+     this.http.post<any>(`${this.baseUrl}/create_person/real/`, formData, {headers:new HttpHeaders(headerDict)}).subscribe(data => {
+        console.log(data)
+    })
+    console.log(formData)
   }
 
   createSurveyFormGroup(): FormGroup {
     return this.fb.group({
-      survey:[
-        {
-        question: "",
-        answer: "",
-        remark: ""
-        },
-      ],
-      level:"none"
+      name:"",
+      subject:[],
+      level:"none",
+      lang:"",
+      email:["", [Validators.required]]
     });
   }
 
