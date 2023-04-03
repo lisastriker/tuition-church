@@ -10,13 +10,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './views/home/home.component';
 import { StatusComponent } from './views/status/status.component';
+import { AuthModule } from '@auth0/auth0-angular';
+import { LoginComponent } from './views/login/login.component';
+import { LogoutComponent } from './views/logout/logout.component';
 @NgModule({
   declarations: [
     AppComponent,
     TutorComponent,
     TuteeComponent,
     HomeComponent,
-    StatusComponent
+    StatusComponent,
+    LoginComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,7 +29,14 @@ import { StatusComponent } from './views/status/status.component';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthModule.forRoot({
+      domain: 'dev-mgpxoifv.us.auth0.com',
+      clientId: 'u1vLBt0nNt2qIdsunjDzx63f4tKX9rIJ',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
