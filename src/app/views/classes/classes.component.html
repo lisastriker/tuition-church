@@ -1,0 +1,103 @@
+<div style="width:100%;"class="container">
+<table style="table-layout: fixed;
+width: 100%;"class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Monday</th>
+      <th scope="col">Tuesday</th>
+      <th scope="col">Wednesday</th>
+      <th scope="col">Thursday</th>
+      <th scope="col">Friday</th>
+      <th scope="col">Saturday</th>
+      <th scope="col">Sunday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+      <table >
+        <tr class="class-block" *ngFor="let match of matchesMonday;let i=index">
+          <button class="button-position" (click)="openModal(match)"><img class="icon" src="../../../assets/icons8-plus-96.png" ></button>
+          <ul *ngIf="match.tutors.length!=0">
+            <span class="badge badge-teacher">{{match.tutors}} <br> {{match.timeslot}}</span>
+            <span class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>
+          </ul>
+        </tr>
+      </table>
+      </td>
+
+      <td>
+        <table >
+          <tr class="class-block" *ngFor="let match of matchesTuesday;let i=index">
+            <button class="button-position" (click)="openModal(match)"><img class="icon" src="../../../assets/icons8-plus-96.png" ></button>
+            <ul *ngIf="match.tutors.length!=0">
+              <span class="badge badge-teacher">{{match.tutors}} <br> {{match.timeslot}}</span>
+              <span class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>            </ul>
+          </tr>
+        </table>
+      </td>
+
+      <td>
+        <table>
+          <tr class="class-block" *ngFor="let match of matchesWednesday;let i=index">
+            <button class="button-position" (click)="openModal(match)"><img class="icon" src="../../../assets/icons8-plus-96.png" ></button>
+            <ul *ngIf="match.tutors.length!=0">
+              <span class="badge badge-teacher">{{match.tutors}} <br> {{match.timeslot}}</span>
+              <span class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>
+            </ul>
+          </tr>
+        </table>
+      </td>
+
+      <td>
+        <table>
+          <tr class="class-block" *ngFor="let match of matchesThursday;let i=index">
+            <button class="button-position" (click)="openModal(match)"><img class="icon" src="../../../assets/icons8-plus-96.png" ></button>
+            <ul>
+              <span class="badge badge-teacher">{{match.tutors}} <br> {{match.timeslot}}</span>
+              <span class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>
+            </ul>
+          </tr>
+        </table>
+      </td>
+
+      <td>
+        <table>
+          <tr class="class-block" *ngFor="let match of matchesFriday;let i=index">
+            <button class="button-position" (click)="openModal(match)"><img class="icon" src="../../../assets/icons8-plus-96.png" ></button>
+            <ul>
+              <span class="badge badge-teacher">{{match.tutors}} <br> {{match.timeslot}}</span>
+              <span class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>
+            </ul>
+          </tr>
+        </table>
+      </td>
+
+      <td>
+        <table>
+          <tr class="class-block" *ngFor="let match of matchesSaturday;let i=index">
+            <button class="button-position" (click)="openModal(match)"><img class="icon" src="../../../assets/icons8-plus-96.png" ></button>
+            <ul>
+              <span class="badge badge-teacher">{{match.tutors}} <br> {{match.timeslot}}</span>
+              <span class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>
+            </ul>
+          </tr>
+        </table>
+      </td>
+
+      <td>
+        <table>
+          <tr class="class-block" *ngFor="let match of matchesSunday;let i=index">
+            <button class="button-position" (click)="openModal(match)"><img class="icon" src="../../../assets/icons8-plus-96.png" ></button>
+            <ul>
+              <span class="badge badge-teacher">{{match.tutors}} <br> {{match.timeslot}}</span>
+              <span class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>
+            </ul>
+          </tr>
+        </table>
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+</div>

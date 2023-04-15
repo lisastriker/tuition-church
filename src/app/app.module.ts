@@ -13,6 +13,9 @@ import { StatusComponent } from './views/status/status.component';
 import { AuthModule } from '@auth0/auth0-angular';
 import { LoginComponent } from './views/login/login.component';
 import { LogoutComponent } from './views/logout/logout.component';
+import { ClassesComponent } from './views/classes/classes.component';
+import { ModalComponent } from './views/modal/modal.component';
+import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +25,8 @@ import { LogoutComponent } from './views/logout/logout.component';
     StatusComponent,
     LoginComponent,
     LogoutComponent,
+    ClassesComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +34,7 @@ import { LogoutComponent } from './views/logout/logout.component';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    MdbModalModule,
     HttpClientModule,
     AuthModule.forRoot({
       domain: 'dev-mgpxoifv.us.auth0.com',

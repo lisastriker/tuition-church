@@ -5,13 +5,15 @@ import { TutorComponent } from './views/tutor/tutor.component';
 import { HomeComponent } from './views/home/home.component';
 import { StatusComponent } from './views/status/status.component';
 import { LoginComponent } from './views/login/login.component';
+import { ClassesComponent } from './views/classes/classes.component';
 
 const routes: Routes = [
   { path: 'tutee', component: TuteeComponent },
   { path: 'tutor', component: TutorComponent },
   {path: "",  component: HomeComponent, pathMatch: "full"},
   {path: "status",  component: StatusComponent},
-  {path: "login",  component: LoginComponent}
+  {path: "login",  component: LoginComponent},
+  {path: "classes",  component: ClassesComponent}
 ];
 
 @NgModule({
