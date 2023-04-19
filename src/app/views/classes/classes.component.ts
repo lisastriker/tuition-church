@@ -11,20 +11,21 @@ import { ModalComponent } from '../modal/modal.component';
 export class ClassesComponent {
   baseUrl = "https://tuition-1-382517.as.r.appspot.com"
   tuitionClasses:Array<any> | undefined;
-  matchesMonday:Array<any> | undefined;
+  matchesMonday:Array<any> | undefined
   matchesTuesday:Array<any> | undefined;
   matchesWednesday:Array<any> | undefined;
   matchesThursday:Array<any> | undefined;
   matchesFriday:Array<any> | undefined;
   matchesSaturday:Array<any> | undefined;
   matchesSunday:Array<any> | undefined;
+  personMonday:Array<any> | undefined;
   modalRef: MdbModalRef<ModalComponent> | null = null;
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
     private modalService: MdbModalService
   ){
-
+    this.matchesMonday = []
   }
   ngOnInit(){
     this.checkClasses()
@@ -38,9 +39,12 @@ export class ClassesComponent {
     }
     this.tuitionClasses=[]
     this.matchesMonday = []
+    this.personMonday = []
     this.http.post<any>(`${this.baseUrl}/retrieve_class/`, {"timeslot": ""}, {headers:new HttpHeaders(headerDict)}).subscribe(data => {
       this.tuitionClasses = data
       this.matchesMonday = data.filter((s:any) => s.timeslot.includes('monday'))
+      //this.personMonday?.push(this.matchesMonday?.)
+      console.log("this is person monday" + this.personMonday)
       this.matchesTuesday = data.filter((s:any) => s.timeslot.includes('tuesday'))
       this.matchesWednesday = data.filter((s:any) => s.timeslot.includes('wednesday'))
       this.matchesThursday = data.filter((s:any) => s.timeslot.includes('thursday'))

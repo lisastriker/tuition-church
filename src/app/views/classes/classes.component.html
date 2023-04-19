@@ -18,9 +18,9 @@ width: 100%;"class="table table-striped">
       <table >
         <tr class="class-block" *ngFor="let match of matchesMonday;let i=index">
           <button class="button-position" (click)="openModal(match)"><img class="icon" src="../../../assets/icons8-plus-96.png" ></button>
-          <ul *ngIf="match.tutors.length!=0">
-            <span class="badge badge-teacher">{{match.tutors}} <br> {{match.timeslot}}</span>
-            <span class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>
+          <ul *ngFor="let person of match.persons;let i=index">
+            <span *ngIf="person.role=='tutor'" class="badge badge-teacher">{{person.name}} <br> {{match.timeslot}}</span>
+            <span *ngIf="person.role=='tutor'" class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>
           </ul>
         </tr>
       </table>
@@ -30,9 +30,10 @@ width: 100%;"class="table table-striped">
         <table >
           <tr class="class-block" *ngFor="let match of matchesTuesday;let i=index">
             <button class="button-position" (click)="openModal(match)"><img class="icon" src="../../../assets/icons8-plus-96.png" ></button>
-            <ul *ngIf="match.tutors.length!=0">
-              <span class="badge badge-teacher">{{match.tutors}} <br> {{match.timeslot}}</span>
-              <span class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>            </ul>
+            <ul *ngFor="let person of match.persons;let i=index">
+              <span *ngIf="person.role=='tutor'" class="badge badge-teacher">{{person.name}} <br> {{match.timeslot}}</span>
+              <span *ngIf="person.role=='tutor'" class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>
+            </ul>
           </tr>
         </table>
       </td>
@@ -41,9 +42,9 @@ width: 100%;"class="table table-striped">
         <table>
           <tr class="class-block" *ngFor="let match of matchesWednesday;let i=index">
             <button class="button-position" (click)="openModal(match)"><img class="icon" src="../../../assets/icons8-plus-96.png" ></button>
-            <ul *ngIf="match.tutors.length!=0">
-              <span class="badge badge-teacher">{{match.tutors}} <br> {{match.timeslot}}</span>
-              <span class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>
+            <ul *ngFor="let person of match.persons;let i=index">
+              <span *ngIf="person.role=='tutor'" class="badge badge-teacher">{{person.name}} <br> {{match.timeslot}}</span>
+              <span *ngIf="person.role=='tutor'" class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>
             </ul>
           </tr>
         </table>
@@ -53,9 +54,9 @@ width: 100%;"class="table table-striped">
         <table>
           <tr class="class-block" *ngFor="let match of matchesThursday;let i=index">
             <button class="button-position" (click)="openModal(match)"><img class="icon" src="../../../assets/icons8-plus-96.png" ></button>
-            <ul>
-              <span class="badge badge-teacher">{{match.tutors}} <br> {{match.timeslot}}</span>
-              <span class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>
+            <ul *ngFor="let person of match.persons;let i=index">
+              <span *ngIf="person.role=='tutor'" class="badge badge-teacher">{{person.name}} <br> {{match.timeslot}}</span>
+              <span *ngIf="person.role=='tutor'" class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>
             </ul>
           </tr>
         </table>
@@ -65,9 +66,9 @@ width: 100%;"class="table table-striped">
         <table>
           <tr class="class-block" *ngFor="let match of matchesFriday;let i=index">
             <button class="button-position" (click)="openModal(match)"><img class="icon" src="../../../assets/icons8-plus-96.png" ></button>
-            <ul>
-              <span class="badge badge-teacher">{{match.tutors}} <br> {{match.timeslot}}</span>
-              <span class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>
+            <ul *ngFor="let person of match.persons;let i=index">
+              <span *ngIf="person.role=='tutor'" class="badge badge-teacher">{{person.name}} <br> {{match.timeslot}}</span>
+              <span *ngIf="person.role=='tutor'" class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>
             </ul>
           </tr>
         </table>
@@ -77,9 +78,9 @@ width: 100%;"class="table table-striped">
         <table>
           <tr class="class-block" *ngFor="let match of matchesSaturday;let i=index">
             <button class="button-position" (click)="openModal(match)"><img class="icon" src="../../../assets/icons8-plus-96.png" ></button>
-            <ul>
-              <span class="badge badge-teacher">{{match.tutors}} <br> {{match.timeslot}}</span>
-              <span class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>
+            <ul *ngFor="let person of match.persons;let i=index">
+              <span *ngIf="person.role=='tutor'" class="badge badge-teacher">{{person.name}} <br> {{match.timeslot}}</span>
+              <span *ngIf="person.role=='tutor'" class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>
             </ul>
           </tr>
         </table>
@@ -89,9 +90,9 @@ width: 100%;"class="table table-striped">
         <table>
           <tr class="class-block" *ngFor="let match of matchesSunday;let i=index">
             <button class="button-position" (click)="openModal(match)"><img class="icon" src="../../../assets/icons8-plus-96.png" ></button>
-            <ul>
-              <span class="badge badge-teacher">{{match.tutors}} <br> {{match.timeslot}}</span>
-              <span class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>
+            <ul *ngFor="let person of match.persons;let i=index">
+              <span *ngIf="person.role=='tutor'" class="badge badge-teacher">{{person.name}} <br> {{match.timeslot}}</span>
+              <span *ngIf="person.role=='tutor'" class="badge badge-level-primary">{{match.level}} <br> {{match.subject}}</span>
             </ul>
           </tr>
         </table>

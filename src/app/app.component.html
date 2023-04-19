@@ -21,6 +21,9 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/classes" routerLinkActive="active" ariaCurrentWhenActive="page">Join a class</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/teachers" routerLinkActive="active" ariaCurrentWhenActive="page">List of Teachers</a>
+      </li>
       </ul>
       <ul class="navbar-nav">
       <app-login *ngIf="(auth.isAuthenticated$ | async) == false"></app-login>

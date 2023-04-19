@@ -16,6 +16,7 @@ import { LogoutComponent } from './views/logout/logout.component';
 import { ClassesComponent } from './views/classes/classes.component';
 import { ModalComponent } from './views/modal/modal.component';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
+import { TeachersComponent } from './views/teachers/teachers.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
     LogoutComponent,
     ClassesComponent,
     ModalComponent,
+    TeachersComponent,
   ],
   imports: [
     BrowserModule,
