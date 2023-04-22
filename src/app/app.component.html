@@ -21,14 +21,18 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/classes" routerLinkActive="active" ariaCurrentWhenActive="page">Join a class</a>
       </li>
-      <li class="nav-item">
+      <li *ngIf="adminStatus == 'true'">
         <a class="nav-link" routerLink="/teachers" routerLinkActive="active" ariaCurrentWhenActive="page">List of Teachers</a>
       </li>
+      <li *ngIf="adminStatus == 'false'" class="nav-item">
+        <a class="nav-link" routerLink="/logging" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a>
+      </li>
+      <li *ngIf="adminStatus == 'true'" class="nav-item">
+        <button class="btn btn-primary" (click)="Logout()">Logout</button>
+      </li>
       </ul>
-      <ul class="navbar-nav">
-      <app-login *ngIf="(auth.isAuthenticated$ | async) == false"></app-login>
-      <app-logout *ngIf="auth.isAuthenticated$ | async"></app-logout>
-      </ul>
+
+      
 
   </div>
 </nav>

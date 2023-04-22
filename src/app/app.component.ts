@@ -7,8 +7,23 @@ import { AuthService } from '@auth0/auth0-angular';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'church';
-  constructor(public auth:AuthService){
+  title="Tuition"
+  adminStatus:string | null
+  constructor(){
+    this.adminStatus="false"
+  }
 
+  ngOnInit(){
+    if(localStorage.getItem("admin")!== null){
+      console.log("Not null")
+    this.adminStatus = localStorage.getItem('admin')
+    console.log(this.adminStatus)
+  }
+  }
+
+  Logout(){
+    console.log("logging out")
+    localStorage.removeItem("admin")
+    this.adminStatus = "false"
   }
 }
