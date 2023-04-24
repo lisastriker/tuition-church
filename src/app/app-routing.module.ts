@@ -8,6 +8,7 @@ import { LoginComponent } from './views/login/login.component';
 import { ClassesComponent } from './views/classes/classes.component';
 import { TeachersComponent } from './views/teachers/teachers.component';
 import { LoggingComponent } from './views/logging/logging.component';
+import { AddClassComponent } from './views/add-class/add-class.component';
 
 const routes: Routes = [
   { path: 'tutee', component: TuteeComponent },
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: "status",  component: StatusComponent},
   {path: "logging",  component: LoggingComponent},
   {path: "classes",  component: ClassesComponent},
-  {path:"teachers", component:TeachersComponent}
+  {path:"teachers", component:TeachersComponent},
+  {path:"addclass", component:AddClassComponent}
 ];
 
 @NgModule({

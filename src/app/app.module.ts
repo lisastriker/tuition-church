@@ -18,6 +18,7 @@ import { ModalComponent } from './views/modal/modal.component';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { TeachersComponent } from './views/teachers/teachers.component';
 import { LoggingComponent } from './views/logging/logging.component';
+import { AddClassComponent } from './views/add-class/add-class.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,7 @@ import { LoggingComponent } from './views/logging/logging.component';
     ModalComponent,
     TeachersComponent,
     LoggingComponent,
+    AddClassComponent,
   ],
   imports: [
     BrowserModule,

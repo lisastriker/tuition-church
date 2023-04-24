@@ -55,17 +55,6 @@ export class TutorComponent {
     {name: "Tamil", value:"Tamil"},
     {name: "Math", value:"Math"},
     {name:"Science", value:"Science"},
-    {name:"Geography", value:"Geography"},
-    {name:"Social Studies", value:"Social Studies"},
-    {name:"History", value:"History"},
-    {name:"Literature", value:"Literature"},
-  ] 
-
-  subjectUpper: Array<any> = [
-    {name:"English", value:"English"},
-    {name: "Chinese", value:"Chinese"},
-    {name: "Malay", value:"Malay"},
-    {name: "Tamil", value:"Tamil"},
     {name: "E Math", value:"E Math"},
     {name: "A Math", value:" A Math"},
     {name:"Chemistry", value:"Chemistry"},
@@ -75,7 +64,9 @@ export class TutorComponent {
     {name:"Social Studies", value:"Social Studies"},
     {name:"History", value:"History"},
     {name:"Literature", value:"Literature"},
-  ]
+  ] 
+
+
 
   constructor(
     private fb: FormBuilder,

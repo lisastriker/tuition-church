@@ -25,5 +25,6 @@ export class AppComponent {
     console.log("logging out")
     localStorage.removeItem("admin")
     this.adminStatus = "false"
+    window.location.href="/"
   }
 }

@@ -1,0 +1,70 @@
+
+<form [formGroup]="addClassForm" (ngSubmit)="onSubmit()">
+
+<select name="teacher" id="#" #teacher (change)="onSelected(teacher.value)">
+  <option default>Pick a teacher</option>
+  <option *ngFor="let teacher of teacherList" formArrayName="name" [value]="teacher.name">{{teacher.name}}</option>
+</select>
+
+<select name="demo" id="#" #timeslot (change)="onSelected1(timeslot.value)">
+  <option default>Pick a timeslot</option>
+  <option *ngFor="let timeslot of alltimeslots" formArrayName="timeslots" [value]="timeslot">{{timeslot}}</option>
+</select>
+
+
+<select name="subject" id="#" #subject (change)="onSelected2(subject.value)">
+  <option default>Pick a subject</option>
+  <option *ngFor="let subject of allSubjects" formArrayName="subjects" [value]="subject">{{subject}}</option>
+</select>
+
+<select name="level" id="#" #level (change)="onSelected3(level.value)">
+  <option default>Pick a subject</option>
+  <option *ngFor="let level of allLevels" formArrayName="levels" [value]="level">{{level}}</option>
+</select>
+
+<button type="submit" class="btn btn-danger btn-lg btn-block">
+  Submit
+</button>
+</form>
+
+<table>
+  <tr>
+    <th>Count</th>
+    <th>Level</th>
+    <th>Subject</th>
+    <th>Timeslot</th>
+    <th>Tutors</th>
+  </tr>
+  <tr>
+    <td>
+    <table *ngFor="let stat of stats">
+      <tr>{{stat.students.length}}</tr>
+    </table>
+    </td>
+    
+    <td>
+      <table *ngFor="let stat of stats">
+        <tr>{{stat.level}}</tr>
+      </table>
+    </td>
+
+    <td>
+      <table *ngFor="let stat of stats">
+        <tr>{{stat.subject}}</tr>
+      </table>
+    </td>
+
+    <td>
+      <table *ngFor="let stat of stats">
+        <tr>{{stat.timeslot}}</tr>
+      </table>
+    </td>
+
+    <td>
+      <table *ngFor="let tutor of tutors">
+        <tr>{{tutor}}</tr>
+      </table>
+    </td>
+  </tr>
+
+</table>
