@@ -9,6 +9,7 @@ import { AuthService } from '@auth0/auth0-angular';
 export class AppComponent {
   title="Tuition"
   adminStatus:string | null
+  navbarCollapsed = true;
   constructor(){
     this.adminStatus="false"
   }
@@ -19,6 +20,10 @@ export class AppComponent {
     this.adminStatus = localStorage.getItem('admin')
     console.log(this.adminStatus)
   }
+  }
+
+  toggleNavbarCollapsing() {
+    this.navbarCollapsed = !this.navbarCollapsed;
   }
 
   Logout(){

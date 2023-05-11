@@ -18,11 +18,11 @@
 </select>
 
 <select name="level" id="#" #level (change)="onSelected3(level.value)">
-  <option default>Pick a subject</option>
+  <option default>Pick a level</option>
   <option *ngFor="let level of allLevels" formArrayName="levels" [value]="level">{{level}}</option>
 </select>
 
-<button type="submit" class="btn btn-danger btn-lg btn-block">
+<button style="margin-right:10px" type="submit" class="btn btn-danger btn-sm btn-block">
   Submit
 </button>
 </form>

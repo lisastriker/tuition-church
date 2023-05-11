@@ -1,0 +1,20 @@
+.pic{
+  width:100%
+}
+
+.padding-box{
+  padding:20px;
+}
+
+@media only screen and (max-width:768px) {
+
+    .p-main{
+      font-size:12px;
+    }
+    .padding-box{
+      padding:20px;
+    }
+    .pic{
+      height:100%
+    }
+}
